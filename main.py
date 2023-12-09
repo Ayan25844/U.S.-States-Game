@@ -31,10 +31,7 @@ while len(guessed_states)<50:
         pointer.write(state_title)
 
     if state_title=="Exit":
-        missing_states=[]
-        for states in states_list:
-            if states not in guessed_states:
-                missing_states.append(states)
+        missing_states=[states for states in states_list if states not in guessed_states]
         new_data=pandas.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
         break
